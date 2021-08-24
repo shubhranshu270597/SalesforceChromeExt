@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "My Salesforce",
+    "version": "1.0.0",
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "description": "Salesforce Extension",
+    "browser_action": {
+        "default_popup": "PopUp.html"
+    },
+    "permissions": ["activeTab", "cookies", "https://*.force.com/*", "https://*.salesforce.com/*"],
+    "background": {
+       "scripts": ["Scripts/background.js"]
+    },
+    "content_scripts": [{
+        "js":["Scripts/contentscript.js"],
+        "matches": ["https://*.salesforce.com/*","https://*.force.com/*"],
+        "run_at": "document_end"
+    }]
+}
